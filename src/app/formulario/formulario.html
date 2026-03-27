@@ -1,0 +1,328 @@
+<header class="header-ifes">
+
+  <div class="container d-flex align-items-center">
+
+    <img
+      src="assets/ifes-logo.png"
+      alt="Logo IFES"
+      class="logo-ifes"
+    >
+
+    <div class="ms-3">
+
+      <h5 class="mb-0 text-white">
+        Instituto Federal do Espírito Santo
+      </h5>
+
+      <small class="text-white-50">
+        Sistema de Matrícula Acadêmica
+      </small>
+
+    </div>
+
+  </div>
+
+</header>
+
+<div class="container mt-4">
+
+  <div class="card shadow-lg border-0">
+
+    <div class="card-header bg-primary text-white text-center py-3">
+        <h4 class="mb-0">Formulário de Matrícula Discente</h4>
+    </div>
+
+    <div class="card-body">
+
+      <form #formMatricula="ngForm"
+            (ngSubmit)="cadastrar(formMatricula)">
+
+        <div class="row">
+
+          <!-- Nome -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Nome completo *
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="nome"
+              [(ngModel)]="aluno.nome"
+              required
+              minlength="3"
+              #nome="ngModel"
+            >
+
+            <small class="text-danger"
+              *ngIf="nome.invalid && (nome.touched || nome.dirty)">
+              O nome está inválido
+            </small>
+
+          </div>
+
+
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              E-mail *
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="aluno.email"
+              required
+              email
+              #email="ngModel"
+            >
+
+            <small class="text-danger"
+              *ngIf="email.invalid && (email.touched || email.dirty)">
+              O e-mail está inválido
+            </small>
+
+          </div>
+
+
+          <!-- Idade -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Idade *
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="idade"
+              [(ngModel)]="aluno.idade"
+              required
+              min="18"
+              #idade="ngModel"
+            >
+
+            <small class="text-danger"
+              *ngIf="idade.invalid && (idade.touched || idade.dirty)">
+              A idade mínima é 18 anos
+            </small>
+
+          </div>
+
+
+          <!-- Genero -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Gênero *
+            </label>
+
+            <select
+              class="form-control"
+              name="genero"
+              [(ngModel)]="aluno.genero"
+              required
+              #genero="ngModel"
+            >
+
+              <option value="">Selecione</option>
+              <option>Masculino</option>
+              <option>Feminino</option>
+              <option>Outro</option>
+
+            </select>
+
+            <small class="text-danger"
+              *ngIf="genero.invalid && (genero.touched || genero.dirty)">
+              Selecione o gênero
+            </small>
+
+          </div>
+
+
+          <!-- Senha -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Senha *
+            </label>
+
+            <input
+              type="password"
+              class="form-control"
+              name="senha"
+              [(ngModel)]="aluno.senha"
+              required
+              minlength="6"
+              #senha="ngModel"
+            >
+
+            <small class="text-danger"
+              *ngIf="senha.invalid && (senha.touched || senha.dirty)">
+              A senha deve ter no mínimo 6 caracteres
+            </small>
+
+          </div>
+
+
+          <!-- Confirmar senha -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Confirmar senha *
+            </label>
+
+            <input
+              type="password"
+              class="form-control"
+              name="confirmarSenha"
+              [(ngModel)]="confirmarSenha"
+              required
+              #confirmar="ngModel"
+            >
+
+            <small class="text-danger"
+              *ngIf="confirmarSenha !== aluno.senha &&
+              (confirmar.touched || confirmar.dirty)">
+              As senhas não coincidem
+            </small>
+
+          </div>
+
+
+          <!-- Cidade -->
+          <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+              Cidade *
+            </label>
+
+            <select
+              class="form-control"
+              name="cidade"
+              [(ngModel)]="aluno.cidade"
+              required
+              #cidade="ngModel"
+            >
+
+              <option value="">Selecione</option>
+              <option>Colatina</option>
+              <option>Marilândia</option>
+              <option>Linhares</option>
+              <option>Vitória</option>
+              <option>Serra</option>
+              <option>Outra</option>
+
+            </select>
+
+            <small class="text-danger"
+              *ngIf="cidade.invalid && (cidade.touched || cidade.dirty)">
+              Selecione a cidade
+            </small>
+
+          </div>
+
+
+          <!-- Termos -->
+          <div class="col-md-6 d-flex align-items-center">
+
+            <div class="form-check mt-4">
+
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name="termos"
+                [(ngModel)]="aluno.termos"
+                required
+                #termos="ngModel"
+              >
+
+              <label class="form-check-label fw-bold">
+                Aceito os termos *
+              </label>
+
+              <br>
+
+              <small class="text-danger"
+                *ngIf="termos.invalid &&
+                (termos.touched || termos.dirty)">
+                Você deve aceitar os termos
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BOTÃO -->
+        <div class="mt-4">
+
+          <button
+            class="btn btn-success w-100 fw-bold"
+            type="submit"
+            [disabled]="formMatricula.invalid ||
+            confirmarSenha !== aluno.senha">
+
+            Cadastrar
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- RESUMO -->
+  <div *ngIf="enviado"
+       class="card mt-4 shadow border-success">
+
+    <div class="card-header bg-success text-white">
+
+      <h5 class="mb-0">
+        Dados cadastrados com sucesso
+      </h5>
+
+    </div>
+
+    <div class="card-body">
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <strong>Nome:</strong> {{ aluno.nome }}
+        </div>
+
+        <div class="col-md-6">
+          <strong>Email:</strong> {{ aluno.email }}
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <strong>Idade:</strong> {{ aluno.idade }}
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <strong>Genero:</strong> {{ aluno.genero }}
+        </div>
+
+        <div class="col-md-6 mt-2">
+          <strong>Cidade:</strong> {{ aluno.cidade }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

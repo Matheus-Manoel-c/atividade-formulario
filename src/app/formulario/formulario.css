@@ -1,0 +1,48 @@
+body {
+  background: #f5f7fa;
+}
+
+.header-ifes {
+
+  background: #006b3f;
+  padding: 15px 0;
+
+}
+
+.logo-ifes {
+
+  height: 55px;
+
+}
+
+.card {
+
+  border-radius: 12px;
+
+}
+
+.card-header {
+
+  background: #006b3f !important;
+
+}
+
+input,
+select {
+
+  border-radius: 8px !important;
+
+}
+
+button {
+
+  border-radius: 8px !important;
+  font-size: 16px;
+
+}
+
+.border-success {
+
+  border-width: 2px !important;
+
+}
