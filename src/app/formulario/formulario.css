@@ -4,14 +4,24 @@ body {
 
 .header-ifes {
 
-  background: #006b3f;
-  padding: 15px 0;
+  background: #038134;
+  padding: 18px 0;
+
+}
+
+.header-ifes .container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
 
 }
 
 .logo-ifes {
 
-  height: 55px;
+  height: 110px;
+  width: auto;
 
 }
 
