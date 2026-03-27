@@ -24,6 +24,34 @@
 
 </header>
 
+<!-- ALERT DE SUCESSO -->
+<div
+  *ngIf="enviado"
+  class="alert text-white alert-dismissible fade show text-center mb-0"
+  style="background:#0B6E3C;"
+  role="alert"
+>
+
+  <strong>Cadastro realizado com sucesso!</strong>
+
+  <div class="mt-2">
+
+    <div><b>Nome:</b> {{ aluno.nome }}</div>
+    <div><b>Email:</b> {{ aluno.email }}</div>
+    <div><b>Idade:</b> {{ aluno.idade }}</div>
+    <div><b>Gênero:</b> {{ aluno.genero }}</div>
+    <div><b>Cidade:</b> {{ aluno.cidade }}</div>
+
+  </div>
+
+  <button
+    type="button"
+    class="btn-close"
+    (click)="enviado = false"
+  ></button>
+
+</div>
+
 <div class="container mt-4">
 
   <div class="card shadow-lg border-0">
@@ -280,48 +308,13 @@
     </div>
 
   </div>
+  
+  <div *ngIf="enviado" class="alert mt-4 text-center shadow-sm" style="background:#0B6E3C; color:white;">
 
+    <strong>Cadastro realizado com sucesso!</strong>
+    <br>
 
-
-  <!-- RESUMO -->
-  <div *ngIf="enviado"
-       class="card mt-4 shadow border-success">
-
-    <div class="card-header bg-success text-white">
-
-      <h5 class="mb-0">
-        Dados cadastrados com sucesso
-      </h5>
-
-    </div>
-
-    <div class="card-body">
-
-      <div class="row">
-
-        <div class="col-md-6">
-          <strong>Nome:</strong> {{ aluno.nome }}
-        </div>
-
-        <div class="col-md-6">
-          <strong>Email:</strong> {{ aluno.email }}
-        </div>
-
-        <div class="col-md-6 mt-2">
-          <strong>Idade:</strong> {{ aluno.idade }}
-        </div>
-
-        <div class="col-md-6 mt-2">
-          <strong>Genero:</strong> {{ aluno.genero }}
-        </div>
-
-        <div class="col-md-6 mt-2">
-          <strong>Cidade:</strong> {{ aluno.cidade }}
-        </div>
-
-      </div>
-
-    </div>
+    {{ aluno.nome }} foi cadastrado no sistema acadêmico.
 
   </div>
 
